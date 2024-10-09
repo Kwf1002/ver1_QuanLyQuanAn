@@ -1,0 +1,18 @@
+
+- sqlplus -> dang nhap tai khoan
+
+- Kiểm tra gói DBMS_CRYPTO:
+SELECT * FROM dba_objects WHERE object_name = 'DBMS_CRYPTO' AND object_type = 'PACKAGE';
+
+- Cài đặt gói DBMS_CRYPTO:
+-- Đăng nhập vào tài khoản SYS với quyền DBA
+CONNECT sys AS sysdba;
+
+-- Tạo quyền sử dụng gói DBMS_CRYPTO cho tài khoản PUBLIC
+GRANT EXECUTE ON SYS.DBMS_CRYPTO TO PUBLIC;
+
+-- Kích hoạt gói DBMS_CRYPTO
+ALTER SYSTEM SET PLSQL_CODE_TYPE = INTERPRETED;
+ALTER SYSTEM SET PLSQL_DEBUG = TRUE;
+
+- cuối cùng, disconect oracle sql developer -> connect -> chạy lại hàm mã hoá
